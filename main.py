@@ -12,8 +12,7 @@ class MainWindow(QMainWindow):
         #self.setCentralWidget(self.widget)
 
         self.browser = QWebEngineView()
-        self.browser.setStyleSheet("background-color: black; color: white")
-        self.browser.load(QUrl.fromLocalFile('D:\\jar\\EXE\\BROWSER\\main.html'))
+        #self.browser.load(QUrl.fromLocalFile('D:\\jar\\HN-Browser\\main.html'))
 
         self.setCentralWidget(self.browser)
 
@@ -23,18 +22,20 @@ class MainWindow(QMainWindow):
 
         # navbar
         navbar = QToolBar()
-        navbar.setStyleSheet("background-color: black; color: white")
         self.addToolBar(navbar)
 
-        back_btn = QAction('<', self)
+        back_btn = QAction('', self)
+        back_btn.setFont(QFont('JetBrainsMono NF',8))
         back_btn.triggered.connect(self.browser.back)
         navbar.addAction(back_btn)
 
-        forward_btn = QAction('>', self)
+        forward_btn = QAction('', self)
+        forward_btn.setFont(QFont('JetBrainsMono NF',8))
         forward_btn.triggered.connect(self.browser.forward)
         navbar.addAction(forward_btn)
 
-        reload_btn = QAction('֍', self)
+        reload_btn = QAction('勒', self)
+        reload_btn.setFont(QFont('JetBrainsMono NF',8))
         reload_btn.triggered.connect(self.browser.reload)
         navbar.addAction(reload_btn)
 
@@ -45,8 +46,13 @@ class MainWindow(QMainWindow):
 
         you_btn = QAction('', self)
         you_btn.setFont(QFont('JetBrainsMono NF',8))
-        you_btn.triggered.connect(lambda: self.get_to('https://www.youtbe.com/'))
+        you_btn.triggered.connect(lambda: self.get_to('https://www.youtube.com/'))
         navbar.addAction(you_btn)
+
+        gg_btn = QAction('', self)
+        gg_btn.setFont(QFont('JetBrainsMono NF',8))
+        gg_btn.triggered.connect(lambda: self.get_to('https://www.google.com/'))
+        navbar.addAction(gg_btn)
 
         self.show()
 
